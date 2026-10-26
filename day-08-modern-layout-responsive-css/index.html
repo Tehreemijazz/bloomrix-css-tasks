@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn HTML and modern web development with our beginner-friendly course.">
+    <meta name="author" content="Tehreem Ijaz">
+    <title>HTML Training Course</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Navigation -->
+    <header class="site-header" id="home">
+        <div class="container nav-container">
+            <a href="#home" class="logo">CodeLearn</a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="#home">Home</a>
+                <a href="#courses">Courses</a>
+                <a href="#lessons">Lessons</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <a href="#courses" class="nav-button">Start Learning</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <p class="eyebrow">LEARN. PRACTICE. GROW.</p>
+
+                    <h1>Build Your Future with <span>Web Development</span></h1>
+
+                    <p class="hero-description">
+                        Learn HTML and CSS step by step. Build practical projects
+                        and develop the skills you need to create modern websites.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#courses" class="button primary-button">
+                            Explore Courses
+                        </a>
+                        <a href="#lessons" class="button secondary-button">
+                            View Lessons
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div>
+                            <strong>6+</strong>
+                            <small>Lessons</small>
+                        </div>
+                        <div>
+                            <strong>100%</strong>
+                            <small>Beginner Friendly</small>
+                        </div>
+                        <div>
+                            <strong>Free</strong>
+                            <small>Learning Resources</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80"
+                        alt="Computer setup used for web development">
+                    <div class="image-label">
+                        <strong>Start with the basics</strong>
+                        <p>Learn at your own pace</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Cards -->
+        <section class="courses section-padding" id="courses">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">OUR COURSES</p>
+                    <h2>Choose What You Want to Learn</h2>
+                    <p>Start with the fundamentals and improve your skills.</p>
+                </div>
+
+                <div class="course-grid">
+
+                    <article class="course-card">
+                        <div class="course-icon html-icon">H</div>
+                        <span class="course-level">Beginner</span>
+                        <h3>HTML Fundamentals</h3>
+                        <p>
+                            Learn headings, paragraphs, links, images, forms
+                            and semantic HTML elements.
+                        </p>
+                        <ul>
+                            <li>HTML document structure</li>
+                            <li>Forms and attributes</li>
+                            <li>Semantic elements</li>
+                        </ul>
+                        <a href="#lesson-html" class="card-link">Explore lessons →</a>
+                    </article>
+
+                    <article class="course-card">
+                        <div class="course-icon css-icon">C</div>
+                        <span class="course-level">Beginner</span>
+                        <h3>CSS Fundamentals</h3>
+                        <p>
+                            Style your web pages with colors, fonts, spacing
+                            and the CSS box model.
+                        </p>
+                        <ul>
+                            <li>Selectors and properties</li>
+                            <li>Colors and typography</li>
+                            <li>Box model</li>
+                        </ul>
+                        <a href="#lesson-css" class="card-link">Explore lessons →</a>
+                    </article>
+
+                    <article class="course-card">
+                        <div class="course-icon layout-icon">L</div>
+                        <span class="course-level">Intermediate</span>
+                        <h3>Modern CSS Layout</h3>
+                        <p>
+                            Create flexible and responsive layouts using
+                            Flexbox, Grid and media queries.
+                        </p>
+                        <ul>
+                            <li>Flexbox and Grid</li>
+                            <li>Responsive design</li>
+                            <li>Transitions and transforms</li>
+                        </ul>
+                        <a href="#lesson-layout" class="card-link">Explore lessons →</a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Lessons and Sidebar -->
+        <section class="lessons section-padding" id="lessons">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">LEARNING CENTER</p>
+                    <h2>Learn Step by Step</h2>
+                    <p>Follow the lessons in order to build a strong foundation.</p>
+                </div>
+
+                <div class="lesson-layout">
+
+                    <div class="lesson-main">
+
+                        <article class="lesson-item" id="lesson-html">
+                            <div class="lesson-number">01</div>
+                            <div>
+                                <h3>Introduction to HTML</h3>
+                                <p>
+                                    Understand the structure of a web page and
+                                    practice common HTML tags.
+                                </p>
+                                <time datetime="PT30M">30 minutes</time>
+                            </div>
+                        </article>
+
+                        <article class="lesson-item" id="lesson-css">
+                            <div class="lesson-number">02</div>
+                            <div>
+                                <h3>Introduction to CSS</h3>
+                                <p>
+                                    Learn how to style HTML elements with
+                                    selectors, colors and spacing.
+                                </p>
+                                <time datetime="PT45M">45 minutes</time>
+                            </div>
+                        </article>
+
+                        <article class="lesson-item" id="lesson-layout">
+                            <div class="lesson-number">03</div>
+                            <div>
+                                <h3>Responsive Layouts</h3>
+                                <p>
+                                    Practice Flexbox, Grid, breakpoints
+                                    and responsive components.
+                                </p>
+                                <time datetime="PT60M">60 minutes</time>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <aside class="lesson-sidebar">
+                        <h3>Course Overview</h3>
+                        <p>Everything you need to begin learning web development.</p>
+
+                        <ul class="overview-list">
+                            <li>6 learning modules</li>
+                            <li>Practical examples</li>
+                            <li>Mini projects</li>
+                            <li>Self-paced learning</li>
+                        </ul>
+
+                        <a href="#pricing" class="button primary-button">
+                            View Course Plan
+                        </a>
+
+                        <div class="empty-message"></div>
+                    </aside>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Area -->
+        <section class="practice section-padding">
+            <div class="container practice-layout">
+                <div>
+                    <p class="eyebrow">PRACTICE AREA</p>
+                    <h2>Small Steps Make a Big Difference</h2>
+                    <p>
+                        Practice your skills by creating simple pages,
+                        testing different layouts and making your designs
+                        work on different screen sizes.
+                    </p>
+                    <a href="#contact" class="button primary-button">
+                        Join the Learning Community
+                    </a>
+                </div>
+
+                <figure class="practice-figure">
+                    <img
+                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+                        alt="Person learning and working on a laptop">
+                    <figcaption>Practice regularly to improve your skills.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Pricing / Course Summary -->
+        <section class="pricing section-padding" id="pricing">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">COURSE PLANS</p>
+                    <h2>Choose Your Learning Plan</h2>
+                    <p>Start learning with a plan that suits your needs.</p>
+                </div>
+
+                <div class="pricing-grid">
+
+                    <article class="price-card">
+                        <h3>Basic</h3>
+                        <p class="price">Free</p>
+                        <p>For beginners starting their journey.</p>
+                        <ul>
+                            <li>HTML basics</li>
+                            <li>CSS introduction</li>
+                            <li>Learning resources</li>
+                        </ul>
+                        <a href="#contact" class="button secondary-button">
+                            Get Started
+                        </a>
+                    </article>
+
+                    <article class="price-card featured-price">
+                        <span class="popular-label">Recommended</span>
+                        <h3>Complete</h3>
+                        <p class="price">Free</p>
+                        <p>For learners who want to practice more.</p>
+                        <ul>
+                            <li>All basic topics</li>
+                            <li>Flexbox and Grid</li>
+                            <li>Responsive projects</li>
+                        </ul>
+                        <a href="#contact" class="button primary-button">
+                            Start Learning
+                        </a>
+                    </article>
+
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <caption>Course Feature Comparison</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Feature</th>
+                                <th scope="col">Basic</th>
+                                <th scope="col">Complete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HTML lessons</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>CSS fundamentals</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Flexbox and Grid</td>
+                                <td>Basic</td>
+                                <td>Full lessons</td>
+                            </tr>
+                            <tr>
+                                <td>Practice projects</td>
+                                <td>1 project</td>
+                                <td>Multiple projects</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="contact section-padding" id="contact">
+            <div class="container contact-container">
+                <div>
+                    <p class="eyebrow">GET IN TOUCH</p>
+                    <h2>Have a Question?</h2>
+                    <p>
+                        Send a message if you want to learn more about
+                        the course or its learning resources.
+                    </p>
+                    <p><strong>Email:</strong> hello@codelearn.example</p>
+                </div>
+
+                <form class="contact-form" action="#contact" method="get">
+                    <label for="name">Full Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        required>
+
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required>
+
+                    <label for="message">Your Message</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="4"
+                        placeholder="Write your message"
+                        required></textarea>
+
+                    <button type="submit" class="button primary-button">
+                        Send Message
+                    </button>
+
+                    <input
+                        type="text"
+                        class="readonly-field"
+                        value="Course information request"
+                        aria-label="Request type"
+                        readonly>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="#home" class="footer-logo">CodeLearn</a>
+                <p>Learn the basics. Build useful projects. Keep improving.</p>
+            </div>
+
+            <div>
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#lessons">Lessons</a></li>
+                    <li><a href="#pricing">Course Plans</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#lesson-html">HTML</a></li>
+                    <li><a href="#lesson-css">CSS</a></li>
+                    <li><a href="#lesson-layout">Responsive Design</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="mailto:hello@codelearn.example">Email Us</a></li>
+                    <li><a href="#contact">Contact Form</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; 2026 CodeLearn. All rights reserved.</p>
+            <a href="#home">Back to Top ↑</a>
+        </div>
+    </footer>
+
+</body>
+</html>
