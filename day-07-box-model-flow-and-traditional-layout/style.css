@@ -1,0 +1,472 @@
+
+/* Apply border-box to all elements */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 130px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #1e293b;
+    background-color: #eff6ff;
+}
+
+/* Header stays at the top while scrolling */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 18px 15px;
+    text-align: center;
+    color: white;
+    background-color: #1d4ed8;
+}
+
+/* Decorative line using a pseudo-element */
+.site-header::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    margin: 8px auto 0;
+    border-radius: 5px;
+    background-color: #bfdbfe;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.site-header p {
+    margin: 4px 0 0;
+}
+
+/* Navigation */
+.navbar {
+    position: sticky;
+    top: 118px;
+    z-index: 9;
+    padding: 12px;
+    text-align: center;
+    background-color: #dbeafe;
+    border-bottom: 1px solid #bfdbfe;
+}
+
+.navbar a {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 5px 8px;
+    color: #1d4ed8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #1e40af;
+    text-decoration: underline;
+}
+
+/* Center the main content */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 25px auto;
+}
+
+.intro {
+    position: relative;
+    padding: 22px;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #cbd5e1;
+}
+
+/* Add a marker without extra HTML */
+.intro h2::before {
+    content: "★ ";
+    color: #2563eb;
+}
+
+.intro p {
+    margin-bottom: 0;
+}
+
+/* Traditional two-column layout using floats */
+.columns {
+    margin-bottom: 20px;
+}
+
+.column {
+    float: left;
+    width: 48%;
+    min-height: 190px;
+    padding: 20px;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 3px 8px #cbd5e1;
+}
+
+.left-column {
+    margin-right: 4%;
+}
+
+.right-column {
+    position: relative;
+}
+
+/* Clear the floated columns */
+.clear {
+    clear: both;
+}
+
+/* Card with an absolutely positioned badge */
+.status-card {
+    position: relative;
+    margin-top: 15px;
+    padding: 25px 15px 15px;
+    border: 1px solid #93c5fd;
+    border-radius: 8px;
+    background-color: #eff6ff;
+}
+
+.status-badge {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    padding: 3px 12px;
+    border-radius: 12px;
+    color: white;
+    background-color: #15803d;
+    font-size: 13px;
+}
+
+/* Common section styling */
+.section-card {
+    margin: 20px 0;
+    padding: 25px;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 3px 10px #cbd5e1;
+    scroll-margin-top: 150px;
+}
+
+.section-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #dbeafe;
+    color: #1d4ed8;
+}
+
+/* Form fields */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label,
+.group-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-height: 42px;
+    padding: 10px;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    font: inherit;
+    background-color: white;
+}
+
+/* Focus state */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #93c5fd;
+    border-color: #1d4ed8;
+}
+
+/* Required and invalid fields */
+input:required:invalid,
+select:required:invalid {
+    border-left: 4px solid #dc2626;
+}
+
+/* Valid fields */
+input:required:valid,
+select:required:valid {
+    border-left: 4px solid #16a34a;
+}
+
+/* Disabled field */
+input:disabled {
+    color: #64748b;
+    background-color: #e2e8f0;
+    cursor: not-allowed;
+}
+
+/* Radio buttons and checkboxes */
+.option {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: normal !important;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: #2563eb;
+}
+
+input[type="checkbox"]:checked + span {
+    color: #15803d;
+}
+
+/* Buttons */
+button {
+    margin: 5px 8px 5px 0;
+    padding: 11px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #2563eb;
+    font: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1e40af;
+}
+
+button:active {
+    background-color: #1e3a8a;
+    transform: translateY(1px);
+}
+
+.reset-button {
+    color: #1e293b;
+    background-color: #e2e8f0;
+}
+
+.reset-button:hover {
+    background-color: #cbd5e1;
+}
+
+/* Table */
+.table-note {
+    margin-bottom: 15px;
+}
+
+/* Handles wide tables on small screens */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #bfdbfe;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    text-align: left;
+}
+
+th {
+    color: white;
+    background-color: #1d4ed8;
+}
+
+/* Alternating table rows */
+tbody tr:nth-child(even) {
+    background-color: #eff6ff;
+}
+
+tbody tr:hover {
+    background-color: #dbeafe;
+}
+
+/* Visited links */
+.navbar a:visited {
+    color: #1d4ed8;
+}
+
+/* Inline and block examples */
+.demo-block {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #dbeafe;
+    border: 1px solid #93c5fd;
+}
+
+.demo-inline {
+    display: inline;
+    padding: 5px;
+    background-color: #bfdbfe;
+}
+
+.demo-inline-block {
+    display: inline-block;
+    width: 145px;
+    margin: 5px 10px 5px 0;
+    padding: 12px;
+    border: 1px solid #93c5fd;
+    background-color: #eff6ff;
+}
+
+/* Visibility demonstration */
+.visibility-demo {
+    padding: 10px;
+    border: 1px dashed #94a3b8;
+}
+
+.visible-box,
+.hidden-box,
+.none-box {
+    padding: 8px;
+    margin: 5px 0;
+    background-color: #dbeafe;
+}
+
+/* Hidden keeps its space in the layout */
+.hidden-box {
+    visibility: hidden;
+}
+
+/* None removes both the element and its space */
+.none-box {
+    display: none;
+}
+
+.small-note {
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Overflow */
+.notes-box {
+    width: 100%;
+    max-width: 100%;
+    max-height: 120px;
+    padding: 15px;
+    margin: 15px 0;
+    overflow: auto;
+    overflow-wrap: break-word;
+    border: 1px solid #93c5fd;
+    background-color: #eff6ff;
+}
+
+.long-text {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #94a3b8;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+/* Two overlapping elements */
+.layer-box {
+    position: relative;
+    height: 140px;
+    margin-top: 20px;
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+}
+
+.layer-back {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    z-index: 1;
+    width: 220px;
+    height: 80px;
+    padding: 10px;
+    background-color: #bfdbfe;
+}
+
+.layer-front {
+    position: absolute;
+    top: 45px;
+    left: 100px;
+    z-index: 2;
+    width: 220px;
+    height: 80px;
+    padding: 10px;
+    background-color: #60a5fa;
+    border: 1px solid #2563eb;
+}
+
+/* Footer */
+.footer {
+    margin-top: 30px;
+    padding: 18px;
+    text-align: center;
+    color: white;
+    background-color: #1e3a8a;
+}
+
+/* Adjust the layout for smaller screens */
+@media (max-width: 650px) {
+    .container {
+        width: 94%;
+    }
+
+    .site-header h1 {
+        font-size: 23px;
+    }
+
+    .navbar {
+        top: 110px;
+    }
+
+    .navbar a {
+        margin: 3px;
+        padding: 4px;
+    }
+
+    .column {
+        float: none;
+        width: 100%;
+        margin: 0 0 15px;
+    }
+
+    .section-card {
+        padding: 15px;
+    }
+
+    .layer-front {
+        left: 65px;
+        width: 190px;
+    }
+
+    .layer-back {
+        width: 190px;
+    }
+}

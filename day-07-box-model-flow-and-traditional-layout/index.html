@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student registration form and CSS layout practice">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sticky header -->
+    <header class="site-header">
+        <div class="header-content">
+            <h1>Student Registration</h1>
+            <p>CSS Layout and Box Model Practice</p>
+        </div>
+    </header>
+
+    <!-- Navigation links -->
+    <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#register">Registration</a>
+        <a href="#students">Students</a>
+        <a href="#css-demo">CSS Demo</a>
+    </nav>
+
+    <main class="container" id="home">
+
+        <!-- Introduction section -->
+        <section class="intro">
+            <h2>Welcome to Our Registration Page</h2>
+            <p>
+                Fill out the form below to register as a student.
+                This page demonstrates different CSS layout properties.
+            </p>
+        </section>
+
+        <!-- Two-column layout using floats -->
+        <section class="columns">
+
+            <div class="column left-column">
+                <h2>About This Page</h2>
+                <p>
+                    This project practices the CSS box model, positioning,
+                    display, overflow, pseudo-classes and table styling.
+                </p>
+                <p>
+                    The layout uses traditional floats instead of Flexbox
+                    or Grid.
+                </p>
+            </div>
+
+            <div class="column right-column">
+                <h2>Registration Status</h2>
+
+                <!-- Relative parent and absolute badge -->
+                <div class="status-card">
+                    <span class="status-badge">Open</span>
+                    <h3>New Admissions</h3>
+                    <p>
+                        Registration is open. Complete the form to
+                        add your information.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Clear fixes the floated columns -->
+            <div class="clear"></div>
+
+        </section>
+
+        <!-- Registration form -->
+        <section class="section-card" id="register">
+            <h2 class="section-title">Registration Form</h2>
+
+            <form action="#" method="get">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="example@email.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Select Course</label>
+                    <select id="course" name="course" required>
+                        <option value="">Choose a course</option>
+                        <option value="web">Web Development</option>
+                        <option value="software">Software Development</option>
+                        <option value="design">Graphic Design</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Additional Notes</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="4"
+                        placeholder="Write your notes here..."
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <p class="group-label">Gender</p>
+
+                    <label class="option">
+                        <input type="radio" name="gender" value="male" required>
+                        Male
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="gender" value="female">
+                        Female
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="option">
+                        <input type="checkbox" name="agreement" required>
+                        I agree to the registration terms.
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="disabled-field">Example Disabled Field</label>
+                    <input
+                        type="text"
+                        id="disabled-field"
+                        value="This field cannot be edited"
+                        disabled
+                    >
+                </div>
+
+                <button type="submit">Register Now</button>
+                <button type="reset" class="reset-button">Reset Form</button>
+
+            </form>
+        </section>
+
+        <!-- Student table -->
+        <section class="section-card" id="students">
+            <h2 class="section-title">Registered Students</h2>
+
+            <p class="table-note">
+                Sample student records for practicing table styling.
+            </p>
+
+            <!-- The wrapper handles horizontal overflow -->
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Course</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>101</td>
+                            <td>Ali Ahmed</td>
+                            <td>ali@example.com</td>
+                            <td>Web Development</td>
+                            <td>Active</td>
+                        </tr>
+
+                        <tr>
+                            <td>102</td>
+                            <td>Sara Khan</td>
+                            <td>sara@example.com</td>
+                            <td>Software Development</td>
+                            <td>Active</td>
+                        </tr>
+
+                        <tr>
+                            <td>103</td>
+                            <td>Ahmed Raza</td>
+                            <td>ahmed@example.com</td>
+                            <td>Graphic Design</td>
+                            <td>Pending</td>
+                        </tr>
+
+                        <tr>
+                            <td>104</td>
+                            <td>Ayesha Noor</td>
+                            <td>ayesha@example.com</td>
+                            <td>Web Development</td>
+                            <td>Active</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- CSS display and visibility demonstration -->
+        <section class="section-card" id="css-demo">
+            <h2 class="section-title">Display and Visibility Demo</h2>
+
+            <p>Block elements start on a new line.</p>
+
+            <div class="demo-block">Block Element</div>
+
+            <p>
+                <span class="demo-inline">Inline One</span>
+                <span class="demo-inline">Inline Two</span>
+            </p>
+
+            <div class="demo-inline-block">Inline-block One</div>
+            <div class="demo-inline-block">Inline-block Two</div>
+
+            <div class="visibility-demo">
+                <p class="visible-box">Visible element</p>
+
+                <!-- visibility:hidden keeps the space -->
+                <p class="hidden-box">Hidden element</p>
+
+                <!-- display:none removes the element and its space -->
+                <p class="none-box">Element with display:none</p>
+
+                <p class="visible-box">Another visible element</p>
+            </div>
+
+            <p class="small-note">
+                The hidden element keeps its space, while display:none
+                removes the element from the layout.
+            </p>
+        </section>
+
+        <!-- Overflow and text wrapping -->
+        <section class="section-card">
+            <h2 class="section-title">Overflow and Text Wrapping</h2>
+
+            <p>Scroll inside this box to read the full text.</p>
+
+            <div class="notes-box">
+                CSS controls how content behaves when it becomes
+                larger than its container. Overflow can be visible,
+                hidden, scroll, or auto. Text wrapping properties
+                help prevent long words and text from breaking the layout.
+                This notes area has a fixed maximum height and allows scrolling.
+            </div>
+
+            <p class="long-text">
+                Example of a very long word:
+                ThisIsAnExtremelyLongWordThatShouldWrapInsideItsContainer
+            </p>
+        </section>
+
+        <!-- Layering and positioning -->
+        <section class="section-card">
+            <h2 class="section-title">Positioning and Z-Index</h2>
+
+            <div class="layer-box">
+                <div class="layer-back">Back Layer (z-index: 1)</div>
+                <div class="layer-front">Front Layer (z-index: 2)</div>
+            </div>
+
+            <p class="small-note">
+                The front layer appears above the back layer because
+                it has a higher z-index.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Student Registration Project | CSS Practice</p>
+    </footer>
+
+</body>
+</html>
