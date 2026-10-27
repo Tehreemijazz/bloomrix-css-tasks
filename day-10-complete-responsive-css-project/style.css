@@ -1,0 +1,1276 @@
+
+/* ========================================
+   1. CSS LAYERS AND DESIGN VARIABLES
+======================================== */
+
+@layer reset, base, layout, components, utilities, responsive;
+
+@layer reset {
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 6rem;
+    }
+
+    body,
+    h1, h2, h3, p,
+    ul, ol {
+        margin: 0;
+    }
+
+    ul, ol {
+        padding: 0;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+        font: inherit;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+        max-width: 100%;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    button {
+        cursor: pointer;
+    }
+}
+
+@layer base {
+    :root {
+        color-scheme: light dark;
+
+        /* Colors */
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --accent: #38bdf8;
+        --success: #15803d;
+        --warning: #a16207;
+        --danger: #b91c1c;
+
+        --page-bg: #f4f7fc;
+        --surface: #ffffff;
+        --surface-alt: #eaf1fc;
+        --text: #1e293b;
+        --muted: #64748b;
+        --border: #dbe3ef;
+        --focus: #f59e0b;
+
+        /* Spacing */
+        --space-1: 0.25rem;
+        --space-2: 0.5rem;
+        --space-3: 0.75rem;
+        --space-4: 1rem;
+        --space-5: 1.5rem;
+        --space-6: 2rem;
+        --space-7: 3rem;
+        --space-8: 4rem;
+
+        /* Typography */
+        --text-small: 0.875rem;
+        --text-normal: 1rem;
+        --text-large: 1.25rem;
+        --heading-small: 1.5rem;
+
+        /* Rounded corners and shadows */
+        --radius-small: 0.5rem;
+        --radius-medium: 1rem;
+        --radius-large: 1.5rem;
+        --radius-pill: 999px;
+
+        --shadow-small: 0 4px 12px rgb(15 23 42 / 6%);
+        --shadow-large: 0 15px 35px rgb(15 23 42 / 10%);
+
+        --container-width: 1120px;
+    }
+
+    /* Light theme when the user prefers light mode */
+    @media (prefers-color-scheme: light) {
+        :root {
+            color-scheme: light;
+        }
+    }
+
+    /* Dark theme follows the system preference */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            color-scheme: dark;
+
+            --primary: #60a5fa;
+            --primary-dark: #93c5fd;
+            --accent: #7dd3fc;
+            --success: #86efac;
+            --warning: #fde68a;
+            --danger: #fca5a5;
+
+            --page-bg: #0f172a;
+            --surface: #1e293b;
+            --surface-alt: #172338;
+            --text: #f1f5f9;
+            --muted: #cbd5e1;
+            --border: #475569;
+            --focus: #fbbf24;
+
+            --shadow-small: 0 4px 12px rgb(0 0 0 / 15%);
+            --shadow-large: 0 15px 35px rgb(0 0 0 / 25%);
+        }
+    }
+
+    /* Optional manual theme class for future use */
+    :root.theme-light {
+        color-scheme: light;
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --accent: #38bdf8;
+        --success: #15803d;
+        --warning: #a16207;
+        --danger: #b91c1c;
+        --page-bg: #f4f7fc;
+        --surface: #ffffff;
+        --surface-alt: #eaf1fc;
+        --text: #1e293b;
+        --muted: #64748b;
+        --border: #dbe3ef;
+        --focus: #f59e0b;
+        --shadow-small: 0 4px 12px rgb(15 23 42 / 6%);
+        --shadow-large: 0 15px 35px rgb(15 23 42 / 10%);
+    }
+
+    :root.theme-dark {
+        color-scheme: dark;
+        --primary: #60a5fa;
+        --primary-dark: #93c5fd;
+        --accent: #7dd3fc;
+        --success: #86efac;
+        --warning: #fde68a;
+        --danger: #fca5a5;
+        --page-bg: #0f172a;
+        --surface: #1e293b;
+        --surface-alt: #172338;
+        --text: #f1f5f9;
+        --muted: #cbd5e1;
+        --border: #475569;
+        --focus: #fbbf24;
+        --shadow-small: 0 4px 12px rgb(0 0 0 / 15%);
+        --shadow-large: 0 15px 35px rgb(0 0 0 / 25%);
+    }
+
+    body {
+        min-width: 320px;
+        background: var(--page-bg);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: var(--text-normal);
+        line-height: 1.7;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    h1, h2, h3 {
+        line-height: 1.25;
+        font-weight: 700;
+    }
+
+    h1 {
+        font-size: clamp(2.2rem, 5vw, 3.8rem);
+        letter-spacing: -0.04em;
+    }
+
+    h2 {
+        font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    }
+
+    h3 {
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+    }
+
+    p {
+        color: var(--muted);
+    }
+
+    a {
+        transition: color 0.2s, background-color 0.2s,
+                    border-color 0.2s, transform 0.2s;
+    }
+
+    a:hover {
+        color: var(--primary);
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    summary:focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 4px;
+    }
+
+    ::selection {
+        background: var(--primary);
+        color: white;
+    }
+}
+
+/* ========================================
+   2. MAIN LAYOUT
+======================================== */
+
+@layer layout {
+    .container {
+        width: min(100% - 2rem, var(--container-width));
+        margin-inline: auto;
+    }
+
+    .section {
+        padding-block: clamp(3.5rem, 7vw, 6rem);
+        scroll-margin-top: 5rem;
+    }
+
+    .section-alt {
+        background: var(--surface-alt);
+    }
+
+    .section-heading {
+        max-width: 650px;
+        margin: 0 auto clamp(2rem, 4vw, 3rem);
+        text-align: center;
+    }
+
+    .section-heading h2 {
+        margin-block: var(--space-2) var(--space-3);
+    }
+
+    .eyebrow {
+        color: var(--primary);
+        font-size: var(--text-small);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    /* Header uses Flexbox */
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .header-content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-3);
+        padding-block: var(--space-3);
+    }
+
+    .logo {
+        color: var(--text);
+        font-size: 1.6rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+    }
+
+    .logo span {
+        color: var(--primary);
+    }
+
+    .main-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-1);
+    }
+
+    .nav-link {
+        display: inline-block;
+        padding: 0.4rem 0.65rem;
+        border-radius: var(--radius-small);
+        color: var(--muted);
+        font-size: var(--text-small);
+        font-weight: 600;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        background: var(--surface-alt);
+        color: var(--primary);
+    }
+
+    /* Hero uses Flexbox */
+    .hero {
+        overflow: hidden;
+        background:
+            radial-gradient(ellipse at 85% 10%,
+                rgb(56 189 248 / 18%), transparent 40%),
+            linear-gradient(135deg, var(--page-bg), var(--surface-alt));
+    }
+
+    .hero-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: clamp(2rem, 6vw, 5rem);
+    }
+
+    .hero-text {
+        flex: 1 1 500px;
+        min-width: 0;
+        animation: fade-up 0.7s ease both;
+    }
+
+    .hero-text h1 {
+        max-width: 700px;
+        margin-block: var(--space-4);
+    }
+
+    .hero-text h1 span {
+        color: var(--primary);
+    }
+
+    .hero-description {
+        max-width: 600px;
+        font-size: clamp(1rem, 2vw, 1.15rem);
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-3);
+        margin-block: var(--space-5);
+    }
+
+    .hero-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+    }
+
+    .hero-info span {
+        padding: 0.3rem 0.7rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-pill);
+        color: var(--muted);
+        font-size: var(--text-small);
+    }
+
+    .hero-card {
+        flex: 0 1 310px;
+        min-width: 0;
+        padding: clamp(1.5rem, 4vw, 2.5rem);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-large);
+        background: var(--surface);
+        box-shadow: var(--shadow-large);
+        text-align: center;
+        animation: float-in 0.8s ease both;
+    }
+
+    .profile-circle {
+        display: grid;
+        width: clamp(90px, 12vw, 130px);
+        aspect-ratio: 1;
+        place-items: center;
+        margin: 0 auto var(--space-4);
+        border: 5px solid var(--surface-alt);
+        border-radius: 50%;
+        background: linear-gradient(135deg, #1d4ed8, #38bdf8);
+        color: white;
+        font-size: 2.3rem;
+        font-weight: 800;
+    }
+
+    .hero-card h2 {
+        font-size: 1.6rem;
+    }
+
+    .hero-card > p:first-of-type {
+        margin-top: var(--space-2);
+    }
+
+    .profile-divider {
+        height: 1px;
+        margin-block: var(--space-4);
+        background: var(--border);
+    }
+
+    .profile-note {
+        font-size: var(--text-small);
+    }
+
+    .status {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        margin-top: var(--space-4);
+        color: var(--success);
+        font-size: var(--text-small);
+        font-weight: 700;
+    }
+
+    .status span {
+        width: 9px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--success);
+    }
+
+    /* About uses Grid */
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+    }
+
+    .about-panel {
+        padding: clamp(1.25rem, 3vw, 2rem);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-medium);
+        background: var(--surface);
+        box-shadow: var(--shadow-small);
+    }
+
+    .about-panel h3 {
+        margin-bottom: var(--space-3);
+    }
+
+    .about-panel p + p {
+        margin-top: var(--space-3);
+    }
+
+    .about-highlight {
+        border-inline-start: 4px solid var(--primary);
+    }
+
+    .check-list {
+        display: grid;
+        gap: var(--space-3);
+        list-style: none;
+    }
+
+    .check-list li {
+        position: relative;
+        padding-inline-start: 1.7rem;
+        color: var(--muted);
+    }
+
+    .check-list li::before {
+        position: absolute;
+        inset-inline-start: 0;
+        content: "✓";
+        color: var(--success);
+        font-weight: 800;
+    }
+
+    /* Skills use Grid */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .skill-card {
+        min-width: 0;
+        padding: var(--space-5);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-medium);
+        background: var(--surface);
+        box-shadow: var(--shadow-small);
+        transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-large);
+    }
+
+    .skill-icon {
+        display: grid;
+        width: 48px;
+        aspect-ratio: 1;
+        place-items: center;
+        margin-bottom: var(--space-4);
+        border-radius: var(--radius-small);
+        background: var(--surface-alt);
+        color: var(--primary);
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+
+    .skill-card h3 {
+        margin-bottom: var(--space-2);
+    }
+
+    .skill-card p {
+        margin-bottom: var(--space-4);
+    }
+
+    /* Roadmap uses CSS counters */
+    .roadmap {
+        max-width: 800px;
+        margin-inline: auto;
+        counter-reset: milestone;
+    }
+
+    .roadmap-item {
+        position: relative;
+        margin-inline-start: 1rem;
+        padding: 0 0 var(--space-6) 3.5rem;
+        border-inline-start: 2px solid var(--border);
+        counter-increment: milestone;
+    }
+
+    .roadmap-item::before {
+        position: absolute;
+        inset-inline-start: -1.15rem;
+        top: 0;
+        display: grid;
+        width: 2.2rem;
+        aspect-ratio: 1;
+        place-items: center;
+        border: 4px solid var(--page-bg);
+        border-radius: 50%;
+        background: var(--primary);
+        color: white;
+        content: counter(milestone);
+        font-weight: 700;
+    }
+
+    .roadmap-item:last-child {
+        padding-bottom: 0;
+        border-inline-start-color: transparent;
+    }
+
+    .roadmap-item h3 {
+        margin-bottom: var(--space-2);
+    }
+
+    .roadmap-item .badge {
+        margin-top: var(--space-3);
+    }
+
+    /* Assignment cards use Grid */
+    .assignment-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .assignment-card {
+        min-width: 0;
+        padding: var(--space-5);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-medium);
+        background: var(--surface);
+        box-shadow: var(--shadow-small);
+    }
+
+    .card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-3);
+        margin-bottom: var(--space-4);
+    }
+
+    .task-number {
+        color: var(--muted);
+        font-size: 1.6rem;
+        font-weight: 800;
+    }
+
+    .assignment-card h3 {
+        margin-bottom: var(--space-3);
+    }
+
+    .text-link {
+        display: inline-block;
+        margin-top: var(--space-4);
+        color: var(--primary);
+        font-weight: 700;
+    }
+
+    .text-link:hover {
+        text-decoration: underline;
+    }
+
+    /* Responsive table wrapper */
+    .table-wrapper {
+        overflow-x: auto;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-medium);
+        background: var(--surface);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: start;
+    }
+
+    caption {
+        padding: var(--space-4);
+        color: var(--muted);
+        text-align: start;
+    }
+
+    th,
+    td {
+        padding: var(--space-4);
+        border-top: 1px solid var(--border);
+        text-align: start;
+        white-space: nowrap;
+    }
+
+    th {
+        background: var(--surface-alt);
+        font-size: var(--text-small);
+    }
+
+    tbody tr:hover {
+        background: var(--surface-alt);
+    }
+    /* Contact area uses Grid */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: start;
+        gap: var(--space-6);
+    }
+
+    .contact-info h2 {
+        margin-block: var(--space-2) var(--space-4);
+    }
+
+    .contact-detail {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-3);
+        margin-top: var(--space-5);
+    }
+
+    .detail-icon {
+        display: grid;
+        flex: 0 0 42px;
+        aspect-ratio: 1;
+        place-items: center;
+        border-radius: var(--radius-small);
+        background: var(--surface);
+        color: var(--primary);
+        font-weight: 800;
+    }
+
+    .contact-detail h3 {
+        margin-bottom: var(--space-1);
+    }
+
+    .notice {
+        margin-top: var(--space-6);
+        padding: var(--space-4);
+        border-inline-start: 4px solid var(--warning);
+        border-radius: var(--radius-small);
+        background: var(--surface);
+    }
+
+    .notice strong {
+        display: block;
+        margin-bottom: var(--space-1);
+    }
+
+    .contact-form {
+        min-width: 0;
+        padding: clamp(1.25rem, 4vw, 2rem);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-large);
+        background: var(--surface);
+        box-shadow: var(--shadow-large);
+        container-type: inline-size;
+        container-name: form-card;
+    }
+
+    .contact-form > h3 {
+        margin-bottom: var(--space-5);
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .form-group {
+        display: grid;
+        gap: var(--space-2);
+        margin-bottom: var(--space-4);
+    }
+
+    .form-group label,
+    .disabled-demo label {
+        color: var(--text);
+        font-size: var(--text-small);
+        font-weight: 700;
+    }
+
+    .form-group label span {
+        color: var(--danger);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select,
+    .disabled-demo input {
+        width: 100%;
+        min-width: 0;
+        padding: 0.8rem 0.9rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-small);
+        background: var(--page-bg);
+        color: var(--text);
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: var(--muted);
+        opacity: 0.85;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgb(37 99 235 / 15%);
+        outline: none;
+    }
+
+    /* Valid and invalid input states */
+    .form-group input:not(:placeholder-shown):valid,
+    .form-group textarea:not(:placeholder-shown):valid {
+        border-color: var(--success);
+    }
+
+    .form-group input:not(:placeholder-shown):invalid,
+    .form-group textarea:not(:placeholder-shown):invalid {
+        border-color: var(--danger);
+    }
+
+    .form-group select:has(option:checked[value=""]) {
+        color: var(--muted);
+    }
+
+    .checkbox-group {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-3);
+    }
+
+    .checkbox-group input {
+        width: 1.1rem;
+        height: 1.1rem;
+        flex: 0 0 auto;
+        margin-top: 0.25rem;
+        accent-color: var(--primary);
+    }
+
+    .checkbox-group label {
+        font-weight: 400;
+    }
+
+    .submit-btn {
+        width: 100%;
+        border: 0;
+    }
+
+    .form-help {
+        margin-top: var(--space-3);
+        font-size: var(--text-small);
+    }
+
+    .disabled-demo {
+        display: grid;
+        gap: var(--space-2);
+        margin-top: var(--space-5);
+        padding: var(--space-3);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-small);
+    }
+
+    .disabled-demo input:disabled {
+        cursor: not-allowed;
+        opacity: 0.65;
+    }
+
+    /* FAQ */
+    .faq-container {
+        max-width: 850px;
+    }
+
+    .faq-list {
+        display: grid;
+        gap: var(--space-3);
+    }
+
+    .faq-list details {
+        padding: var(--space-4);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-small);
+        background: var(--surface);
+    }
+
+    .faq-list summary {
+        cursor: pointer;
+        color: var(--text);
+        font-weight: 700;
+    }
+
+    .faq-list details[open] {
+        border-color: var(--primary);
+        box-shadow: var(--shadow-small);
+    }
+
+    .faq-list details[open] summary {
+        margin-bottom: var(--space-3);
+        color: var(--primary);
+    }
+
+    /* Footer uses Grid */
+    .site-footer {
+        padding-top: var(--space-7);
+        background: #111f38;
+        color: #f8fafc;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+        padding-bottom: var(--space-6);
+    }
+
+    .footer-logo {
+        display: inline-block;
+        margin-bottom: var(--space-3);
+        color: #f8fafc;
+    }
+
+    .footer-grid p {
+        max-width: 300px;
+        color: #cbd5e1;
+    }
+
+    .footer-grid h3 {
+        margin-bottom: var(--space-3);
+        color: #ffffff;
+        font-size: 1rem;
+    }
+
+    .footer-grid > div > a:not(.logo) {
+        display: block;
+        width: fit-content;
+        margin-top: var(--space-2);
+        color: #cbd5e1;
+        font-size: var(--text-small);
+    }
+
+    .footer-grid a:hover,
+    .footer-bottom a:hover {
+        color: #93c5fd;
+    }
+
+    .footer-bottom {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: var(--space-3);
+        padding-block: var(--space-4);
+        border-top: 1px solid #334155;
+    }
+
+    .footer-bottom p,
+    .footer-bottom a {
+        color: #cbd5e1;
+        font-size: var(--text-small);
+    }
+}
+
+/* ========================================
+   3. REUSABLE COMPONENTS
+======================================== */
+
+@layer components {
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0.7rem 1.2rem;
+        border: 2px solid transparent;
+        border-radius: var(--radius-small);
+        font-weight: 700;
+        text-align: center;
+        transition: transform 0.2s, background-color 0.2s,
+                    box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .btn-primary {
+        background: var(--primary);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: var(--primary-dark);
+        color: white;
+        box-shadow: var(--shadow-small);
+    }
+
+    .btn-outline {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+    .btn-outline:hover {
+        background: var(--primary);
+        color: white;
+    }
+
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        width: fit-content;
+        padding: 0.25rem 0.65rem;
+        border: 1px solid currentColor;
+        border-radius: var(--radius-pill);
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 1.5;
+    }
+
+    .badge::before {
+        width: 6px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: currentColor;
+        content: "";
+    }
+
+    .badge-complete {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    .badge-progress {
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+    .badge-pending {
+        background: #fef3c7;
+        color: #854d0e;
+    }
+
+    /* Container query for the reusable assignment card */
+    .assignment-card {
+        container-type: inline-size;
+        container-name: assignment;
+    }
+
+    @container assignment (min-width: 300px) {
+        .assignment-card .card-top {
+            gap: 1rem;
+        }
+
+        .assignment-card h3 {
+            font-size: 1.3rem;
+        }
+    }
+
+    /* Reusable component styling with :is() */
+    :is(.skill-card, .assignment-card, .about-panel) h3 {
+        overflow-wrap: anywhere;
+    }
+
+    /* :where() keeps the selector specificity low */
+    :where(.hero-info, .check-list) {
+        list-style: none;
+    }
+
+    /* :not() targets links that are not buttons */
+    .main-nav a:not(.active):hover {
+        color: var(--primary);
+    }
+
+    /* :has() adds a style when an FAQ is open */
+    .faq-list:has(details[open]) {
+        gap: var(--space-4);
+    }
+}
+
+/* ========================================
+   4. SMALL UTILITY CLASSES
+======================================== */
+
+@layer utilities {
+    .text-center {
+        text-align: center;
+    }
+
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .contact-form :is(input, textarea, select):disabled {
+        cursor: not-allowed;
+        opacity: 0.65;
+    }
+}
+
+/* ========================================
+   5. ANIMATIONS
+======================================== */
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float-in {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ========================================
+   6. RESPONSIVE BREAKPOINTS
+   Mobile-first design
+======================================== */
+
+/* Breakpoint 1: small phones and larger phones */
+@layer responsive {
+    @media (min-width: 480px) {
+        .skills-grid,
+        .assignment-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .footer-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    /* Breakpoint 2: tablets */
+    @media (min-width: 700px) {
+        .about-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .skills-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .contact-grid {
+            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        }
+
+        .form-row {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .footer-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+    }
+
+    /* Breakpoint 3: desktops */
+    @media (min-width: 960px) {
+        .skills-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .assignment-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .hero-content {
+            gap: 5rem;
+        }
+
+        .hero-card {
+            flex-basis: 340px;
+        }
+    }
+
+    /* Breakpoint 4: very wide screens */
+    @media (min-width: 1200px) {
+        .hero {
+            padding-block: 6.5rem;
+        }
+
+        .section-heading {
+            margin-bottom: 3.5rem;
+        }
+    }
+}
+
+/* ========================================
+   7. BROWSER SUPPORT AND USER PREFERENCES
+======================================== */
+
+/* Use a fallback if backdrop-filter is supported */
+@supports (backdrop-filter: blur(8px)) {
+    .site-header {
+        background: color-mix(in srgb, var(--surface) 92%, transparent);
+        backdrop-filter: blur(8px);
+    }
+}
+
+/* Keep navigation usable without smooth scrolling or animation */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========================================
+   8. PRINT STYLES
+======================================== */
+
+@media print {
+    :root {
+        color-scheme: light;
+        --page-bg: #ffffff;
+        --surface: #ffffff;
+        --surface-alt: #ffffff;
+        --text: #000000;
+        --muted: #333333;
+        --border: #cccccc;
+    }
+
+    body {
+        background: white;
+        color: black;
+        font-size: 11pt;
+    }
+
+    .site-header,
+    .hero-buttons,
+    .contact-form,
+    .site-footer,
+    .text-link {
+        display: none !important;
+    }
+
+    .section,
+    .hero {
+        padding-block: 1rem;
+        background: white;
+        break-inside: avoid;
+    }
+
+    .container {
+        width: 100%;
+        max-width: none;
+    }
+
+    .hero-content {
+        display: block;
+    }
+
+    .hero-card {
+        margin-top: 1rem;
+        box-shadow: none;
+    }
+
+    .skill-card,
+    .assignment-card,
+    .about-panel,
+    .faq-list details {
+        box-shadow: none;
+        break-inside: avoid;
+    }
+
+    .skills-grid,
+    .assignment-grid,
+    .about-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .table-wrapper {
+        overflow: visible;
+    }
+
+    table {
+        width: 100%;
+        font-size: 9pt;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .badge {
+        border: 1px solid #555555;
+        background: white;
+        color: black;
+    }
+
+    .hero-text,
+    .hero-card {
+        animation: none;
+    }
+}
